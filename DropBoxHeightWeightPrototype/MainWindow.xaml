@@ -5,27 +5,44 @@
         xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
         xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
         xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
-        xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm" xmlns:local="clr-namespace:DropBoxHeightWeightPrototype" x:Class="DropBoxHeightWeightPrototype.MainWindow"
+        xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+        xmlns:local="clr-namespace:DropBoxHeightWeightPrototype"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:behaviors="clr-namespace:DropBoxHeightWeightPrototype"
+        x:Class="DropBoxHeightWeightPrototype.MainWindow"
         Title="MainWindow" Height="450" Width="725" DataContext="{dxmvvm:ViewModelSource Type={x:Type local:MainViewModel}}">
+    <!--<Window x:Class="DropBoxHeightWeightPrototype.MainWindow"
+            
+        //namespace with ur behaviors
+        xmlns:behaviors="clr-namespace:ManagementSolution.Helper.Behaviours"
+        //...
+    </Window>--> 
     <dx:DXWindow.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
     </dx:DXWindow.Resources>
 
     <Grid>
-        <StackPanel Name="CustomComboBox" Orientation="Horizontal"  Height="23" Margin="197,122,100,257">
-            <TextBox Width="75" Height="23" Text="{Binding outputTextBox}"/>
-            <ToggleButton Name="BtnDrop" FontFamily="Marlett" FontSize="10" Content="6" Height="23"/>
-            <RadioButton x:Name="BtnInches" Content="IN" Command="{Binding inInches}" IsChecked="True"/>
-            <RadioButton x:Name="BtnCentimeters" Content="CM" Command="{Binding inCentimeters}"/>
+        <StackPanel Name="CustomComboBox" Orientation="Horizontal"   Margin="197,122,100,257">
+            <TextBox Width="75" Height="23">
+                <dxmvvm:Interaction.Behaviors>
+                    <dxmvvm:EventToCommand Command="{Binding txtClickedCommand}" EventName="PreviewMouseUp"/>
+                </dxmvvm:Interaction.Behaviors>
+                <TextBox.Text>
+                    <Binding Path="outputTextBox"
+                             UpdateSourceTrigger="PropertyChanged"
+                             ValidatesOnDataErrors="True"/>
+                </TextBox.Text>
+            </TextBox>
+            <ToggleButton x:Name="BtnDrop" FontFamily="Marlett" FontSize="10" Content="6" Height="23" IsChecked="{Binding isChecked}"/>
+            <RadioButton x:Name="BtnInches" Content="IN" Command="{Binding inInches}" IsChecked="True" VerticalAlignment="Center"/>
+            <RadioButton x:Name="BtnCentimeters" Content="CM" Command="{Binding inCentimeters}" VerticalAlignment="Center"/>
+            
         </StackPanel>
 
 
-        <Popup IsOpen="{Binding IsChecked,ElementName=BtnDrop}" PopupAnimation="Slide" StaysOpen="False" PlacementTarget="{Binding ElementName=CustomComboBox}" OpacityMask="White">
+        <Popup IsOpen="{Binding IsChecked,ElementName=BtnDrop}" PopupAnimation="Fade" StaysOpen="False" PlacementTarget="{Binding ElementName=CustomComboBox}" OpacityMask="White">
             <Grid Background="White">
                 <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="2" BorderBrush="Black">
-                    <!--<Border.Effect>
-                        <DropShadowEffect />
-                    </Border.Effect>-->
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -33,7 +50,7 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="200"/>
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Row="0" Grid.Column="0">
@@ -103,10 +120,14 @@
                                 <dxe:ComboBoxEditItem Content="11"/>
                             </dxe:ComboBoxEdit>
                         </Grid>
-                        <Button Name="BtnEnter" Grid.Column="0" Grid.Row="2" Content="Enter" />
+                        <ToggleButton Name="BtnEnter" Grid.Column="0" Grid.Row="2" Content="Enter">
+                            <dxmvvm:Interaction.Behaviors>
+                                <dxmvvm:EventToCommand EventName="Click" Command="{Binding txtClosedCommand}"/>
+                            </dxmvvm:Interaction.Behaviors>
+                        </ToggleButton>
                     </Grid>
                 </Border>
-               
+
             </Grid>
         </Popup>
 

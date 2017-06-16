@@ -15,6 +15,8 @@ namespace DropBoxHeightWeightPrototype
         public virtual bool AdvancedFormat { get; set; } = true;
         public virtual bool inInches { get; set; }
         public virtual bool inCentimeters { get; set; }
+        private bool isStarted;
+        public virtual bool isChecked { get; set; }
         public void btnPressed(string character)
         {
             outputTextBox += character;
@@ -33,17 +35,53 @@ namespace DropBoxHeightWeightPrototype
         }
         public void OnoutputTextBoxChanged()
         {
-            
+            if (!isStarted)
+            {
+                isStarted = true;
+
+                int outNum;
+                bool result = int.TryParse(outputTextBox, out outNum);
+                if (result)
+                {
+                    isStarted = true;
+                    int feet = outNum / 12;
+                    int inches = outNum - (feet * 12);
+                    outputFeet = feet;
+                    outputInches = inches;
+                }
+                isStarted = false;
+            }
         }
         public void OnoutputFeetChanged()
         {
-            int value = outputFeet * 12 + outputInches;
-            outputTextBox = value.ToString();
+            if (!isStarted)
+            {
+                isStarted = true;
+                int value = outputFeet * 12 + outputInches;
+                outputTextBox = value.ToString();
+                isStarted = false;
+            }
         }
+
+        public  void txtClicked()
+        {
+            isChecked = true;
+        }
+
+        public void txtClosed()
+        {
+            isChecked = false;
+        }
+
         public void OnoutputInchesChanged()
         {
-            int value = outputFeet * 12 + outputInches;
-            outputTextBox = value.ToString();
+            if (!isStarted)
+            {
+                isStarted = true;
+                int value = outputFeet * 12 + outputInches;
+                outputTextBox = value.ToString();
+                isStarted = false;
+            }
         }
     }
 }
