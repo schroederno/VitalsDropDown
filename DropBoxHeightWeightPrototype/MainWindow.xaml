@@ -10,19 +10,20 @@
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         xmlns:behaviors="clr-namespace:DropBoxHeightWeightPrototype"
         x:Class="DropBoxHeightWeightPrototype.MainWindow"
-        Title="MainWindow" Height="450" Width="725" DataContext="{dxmvvm:ViewModelSource Type={x:Type local:MainViewModel}}">
+        Title="MainWindow" Height="450" Width="725">
     <!--<Window x:Class="DropBoxHeightWeightPrototype.MainWindow"
             
         //namespace with ur behaviors
         xmlns:behaviors="clr-namespace:ManagementSolution.Helper.Behaviours"
         //...
     </Window>--> 
-    <dx:DXWindow.Resources>
-        <BooleanToVisibilityConverter x:Key="BoolToVis" />
-    </dx:DXWindow.Resources>
 
     <Grid>
-        <StackPanel Name="CustomComboBox" Orientation="Horizontal"   Margin="197,122,100,257">
+        <local:CustomComboBox Text="{Binding Content,ElementName=label,Mode=TwoWay}" IsInches="{Binding IsChecked,ElementName=checkBox,Mode=OneWayToSource}" IsCentimeters="{Binding IsChecked,ElementName=checkBox1,Mode=OneWayToSource}"/>
+        <Label x:Name="label" Content="" HorizontalAlignment="Left" Margin="270,172,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="checkBox" Content="IsInches" HorizontalAlignment="Left" Margin="434,178,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <CheckBox x:Name="checkBox1" Content="IsCentimeters" HorizontalAlignment="Left" Margin="434,156,0,0" VerticalAlignment="Top"/>
+        <!--<StackPanel Name="CustomComboBox" Orientation="Horizontal"   Margin="197,122,100,257">
             <TextBox Width="75" Height="23">
                 <dxmvvm:Interaction.Behaviors>
                     <dxmvvm:EventToCommand Command="{Binding txtClickedCommand}" EventName="PreviewMouseUp"/>
@@ -129,7 +130,7 @@
                 </Border>
 
             </Grid>
-        </Popup>
+        </Popup>-->
 
     </Grid>
 </dx:DXWindow>
