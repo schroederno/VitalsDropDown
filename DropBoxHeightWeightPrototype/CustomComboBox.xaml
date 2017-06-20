@@ -12,9 +12,9 @@
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
     </UserControl.Resources>
-    <Grid Background="White">
+    <Grid>
         <StackPanel Name="CustomComboBoxPanel" Orientation="Horizontal" Height="25" Width="180">
-            <TextBox Width="75" Height="23" Name="Box" TextChanged="Box_TextChanged" PreviewMouseLeftButtonUp="Box_PreviewMouseLeftButtonUp" MaxLength="3" >
+            <TextBox Width="75" Height="23" Name="Box" TextChanged="Box_TextChanged" PreviewMouseLeftButtonUp="Box_PreviewMouseLeftButtonUp" MaxLength="5" >
                 <TextBox.Text>
                     <Binding Path="Text" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True" Mode="TwoWay"/>
                 </TextBox.Text>
@@ -88,7 +88,7 @@
                             </Grid.ColumnDefinitions>
                             <Label Content="Feet" Grid.Row="0" Grid.Column="0"/>
                             <Label Content="Inches" Grid.Row="0" Grid.Column="2"/>
-                            <dxe:ComboBoxEdit Name="BoxFeet" Grid.Row="0" Grid.Column="1" Width="50" SelectedIndex="0" MaskType="Numeric" Margin="5,0,5,0" SelectedIndexChanged="BoxFeet_SelectedIndexChanged" MaxLength="3">
+                            <dxe:ComboBoxEdit Name="BoxFeet" Grid.Row="0" Grid.Column="1" Width="50" SelectedIndex="0" MaskType="Numeric" Margin="5,0,5,0" SelectedIndexChanged="BoxFeet_SelectedIndexChanged">
                                 <dxe:ComboBoxEditItem Content="0"/>
                                 <dxe:ComboBoxEditItem Content="1"/>
                                 <dxe:ComboBoxEditItem Content="2"/>
@@ -99,7 +99,7 @@
                                 <dxe:ComboBoxEditItem Content="7"/>
                                 <dxe:ComboBoxEditItem Content="8"/>
                             </dxe:ComboBoxEdit>
-                            <dxe:ComboBoxEdit Name="BoxInches" Grid.Row="0" Grid.Column="3" Width="50" MaskType="Numeric"  Margin="5,0,6,0" SelectedIndexChanged="BoxInches_SelectedIndexChanged" MaxLength="3">
+                            <dxe:ComboBoxEdit Name="BoxInches" Grid.Row="0" Grid.Column="3" Width="50" MaskType="Numeric"  Margin="5,0,6,0" SelectedIndexChanged="BoxInches_SelectedIndexChanged">
                                 <dxe:ComboBoxEditItem Content="0"/>
                                 <dxe:ComboBoxEditItem Content="1"/>
                                 <dxe:ComboBoxEditItem Content="2"/>

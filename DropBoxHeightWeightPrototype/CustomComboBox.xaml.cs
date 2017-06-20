@@ -105,13 +105,10 @@ namespace DropBoxHeightWeightPrototype
                 _isStarted = false;
             }
         }
-        public void BtnPressed(string character)
-        {
-            Box.Text += character;
-        }
 
         private void BtnEnter_Click(object sender, RoutedEventArgs e)
         {
+            
             BtnDrop.IsChecked = false;
         }
 
@@ -158,37 +155,44 @@ namespace DropBoxHeightWeightPrototype
 
         private void BtnPeriod_Click(object sender, RoutedEventArgs e)
         {
-            Box.Text += ".";
+            if (Box.Text.Length<5)
+                Box.Text += ".";
         }
 
         private void Btn9_Click(object sender, RoutedEventArgs e)
         {
-            Box.Text += "9";
+            if (Box.Text.Length < 5)
+                Box.Text += "9";
         }
 
         private void Btn8_Click(object sender, RoutedEventArgs e)
         {
-            Box.Text += "8";
+            if (Box.Text.Length < 5)
+                Box.Text += "8";
         }
 
         private void Btn7_Click(object sender, RoutedEventArgs e)
         {
-            Box.Text += "7";
+            if (Box.Text.Length < 5)
+                Box.Text += "7";
         }
 
         private void Btn6_Click(object sender, RoutedEventArgs e)
         {
-            Box.Text += "6";
+            if (Box.Text.Length < 5)
+                Box.Text += "6";
         }
 
         private void Btn5_Click(object sender, RoutedEventArgs e)
         {
-            Box.Text += "5";
+            if (Box.Text.Length < 5)
+                Box.Text += "5";
         }
 
         private void Btn4_Click(object sender, RoutedEventArgs e)
         {
-            Box.Text += "4";
+            if (Box.Text.Length < 5)
+                Box.Text += "4";
         }
 
         private void Btn3_Click(object sender, RoutedEventArgs e)
@@ -198,17 +202,20 @@ namespace DropBoxHeightWeightPrototype
 
         private void Btn2_Click(object sender, RoutedEventArgs e)
         {
-            Box.Text += "2";
+            if (Box.Text.Length < 5)
+                Box.Text += "2";
         }
 
         private void Btn1_Click(object sender, RoutedEventArgs e)
         {
-            Box.Text += "1";
+            if (Box.Text.Length < 5)
+                Box.Text += "1";
         }
 
         private void Btn0_Click(object sender, RoutedEventArgs e)
         {
-            Box.Text += "0";
+            if (Box.Text.Length < 5)
+                Box.Text += "0";
         }
 
         private void BoxInches_SelectedIndexChanged(object sender, RoutedEventArgs e)

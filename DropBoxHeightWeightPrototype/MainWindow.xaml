@@ -19,7 +19,7 @@
     </Window>--> 
 
     <Grid>
-        <local:CustomComboBox Text="{Binding Content,ElementName=label,Mode=TwoWay}" IsInches="{Binding IsChecked,ElementName=checkBox,Mode=OneWayToSource}" IsCentimeters="{Binding IsChecked,ElementName=checkBox1,Mode=OneWayToSource}"/>
+        <local:CustomComboBox Text="{Binding Content,ElementName=label,Mode=TwoWay}" IsInches="{Binding IsChecked,ElementName=checkBox,Mode=OneWayToSource}" IsCentimeters="{Binding IsChecked,ElementName=checkBox1,Mode=OneWayToSource}" Height="25" Width="180" />
         <Label x:Name="label" Content="" HorizontalAlignment="Left" Margin="270,172,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="checkBox" Content="IsInches" HorizontalAlignment="Left" Margin="434,178,0,0" VerticalAlignment="Top" IsChecked="True"/>
         <CheckBox x:Name="checkBox1" Content="IsCentimeters" HorizontalAlignment="Left" Margin="434,156,0,0" VerticalAlignment="Top"/>
